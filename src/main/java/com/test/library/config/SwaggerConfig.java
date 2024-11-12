@@ -21,7 +21,8 @@ public class SwaggerConfig {
                         .description("Teste de aplicativo de Biblioteca")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")))
                 .tags(List.of(
-                        new Tag().name("Autor").description("Operações do Autor")
+                        new Tag().name("Autor").description("Operações do Autor"),
+                        new Tag().name("Livro").description("Operações do Livro")
                 ));
     }
 }

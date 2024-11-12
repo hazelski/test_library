@@ -3,9 +3,10 @@ package com.test.library.controller;
 import com.test.library.model.autor.dto.AutorRequestDTO;
 import com.test.library.model.autor.dto.AutorResponseDTO;
 import com.test.library.service.AutorService;
+import com.test.library.validation.CheckAuthorHasNoBooks;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,11 +18,10 @@ import java.util.UUID;
 @RestController
 @Validated
 @RequestMapping("/autor")
-
+@RequiredArgsConstructor
 public class AutorController {
 
-    @Autowired
-    private AutorService service;
+    private final AutorService service;
 
     @Operation(summary = "Autor", description = "Cadastrar autor", tags = {"Autor"})
     @PostMapping()
@@ -45,13 +45,15 @@ public class AutorController {
     @PutMapping("/{ID}")
     public ResponseEntity<AutorResponseDTO> editar(@PathVariable("ID") UUID id,
                                                         @RequestBody AutorRequestDTO request){
-        return new ResponseEntity<>(service.update(id, request), HttpStatus.CREATED);
+        service.update(id, request);
+
+        return ResponseEntity.noContent().build();
     }
 
     @Operation(summary = "Autor", description = "Remover autor", tags = {"Autor"})
     @DeleteMapping("/{ID}")
-    public ResponseEntity<?> delete(@PathVariable("ID") UUID id){
+    public ResponseEntity<?> delete(@PathVariable("ID") @CheckAuthorHasNoBooks UUID id){
         service.delete(id);
-        return new ResponseEntity<>("Removido com sucesso!", HttpStatus.ACCEPTED);
+        return ResponseEntity.noContent().build();
     }
 }

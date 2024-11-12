@@ -1,5 +1,6 @@
 package com.test.library.model.autor.dto;
 
+import com.test.library.model.autor.domain.AutorDomain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +19,16 @@ public class AutorResponseDTO {
     private String nome;
     private LocalDate dataNascimento;
     private String nacionalidade;
+
+    public static AutorResponseDTO domainToDTO(AutorDomain domain) {
+        if(domain == null)
+            return null;
+
+        return AutorResponseDTO.builder()
+                .id(domain.getId())
+                .nome(domain.getNome())
+                .dataNascimento(domain.getDataNascimento())
+                .nacionalidade(domain.getNacionalidade())
+                .build();
+    }
 }

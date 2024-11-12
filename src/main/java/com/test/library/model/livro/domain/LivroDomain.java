@@ -47,4 +47,9 @@ public class LivroDomain {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime  updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        this.id = UUID.randomUUID();
+    }
 }

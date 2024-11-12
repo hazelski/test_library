@@ -19,9 +19,11 @@ public class AutorRequestDTO {
     @NotBlank(message = "Informar o nome do autor!")
     @Schema(description = "Nome do autor", example = "J.K. Rowling")
     private String nome;
+
     @Past(message = "Informar uma data no passado!")
     @Schema(description = "Data de nascimento do autor", example = "1965-07-31")
     private LocalDate dataNascimento;
+
     @Schema(description = "Nacionalidade do autor", example = "Britânica")
     private String nacionalidade;
 }
