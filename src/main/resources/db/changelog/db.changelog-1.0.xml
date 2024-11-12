@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="Wesley Hazelski" id="ddl_1.0_01" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="autor" />
+            </not>
+        </preConditions>
+        <createTable tableName="autor">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nome" type="varchar(128)" />
+            <column name="data_nascimento" type="DATE" />
+            <column name="nacionalidade" type="varchar(128)" />
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="Wesley Hazelski" id="ddl_1.0_02" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="livro" />
+            </not>
+        </preConditions>
+        <createTable tableName="livro">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="titulo" type="varchar(128)" />
+            <column name="isbn" type="varchar(32)" >
+                <constraints unique="true"/>
+            </column>
+            <column name="data_publicacao" type="DATE" />
+            <column name="autor_id" type="UUID" />
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP" />
+        </createTable>
+        <addForeignKeyConstraint baseTableName="livro"
+                                 baseColumnNames="autor_id"
+                                 constraintName="fk_livro_autor"
+                                 referencedTableName="autor"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
