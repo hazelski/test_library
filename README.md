@@ -15,6 +15,7 @@ Jakarta Validation API: Responsável pela validação de dados, com anotações 
 Banco de Dados: Suporte a bancos relacionais (ex.: PostgreSQL ou MySQL).
 Maven: Gerenciador de dependências e build da aplicação.
 Docker: Para containerização da aplicação.
+
 ⚙ Funcionalidades Principais
 CRUD de Livros: Criação, leitura, atualização e exclusão de livros.
 Associação de Autores: Vinculação de livros a autores específicos.
