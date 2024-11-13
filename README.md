@@ -11,14 +11,14 @@ Jakarta Validation API: responsável pela validação de dados, com anotações 
 Banco de Dados: suporte a bancos relacionais (ex.: PostgreSQL ou MySQL).
 Maven: gerenciador de dependências e build da aplicação.
 Docker: para containerização da aplicação.
-⚙️ Funcionalidades Principais
+
+⚙ Funcionalidades Principais
 CRUD de Livros: criação, leitura, atualização e exclusão de livros.
 Associação de Autores: vinculação de livros a autores específicos.
 Validação Customizada: uso de uma anotação personalizada para impedir a exclusão de autores que possuem livros cadastrados.
 Busca por Autor: obtenção de lista de livros de um autor específico.
+
 📂 Estrutura do Projeto
-bash
-Copiar código
 ├── src/main/java
 │   ├── com.test.library
 │   │   ├── controller          # Controllers REST da aplicação
@@ -27,23 +27,13 @@ Copiar código
 │   │   ├── service             # Serviços de negócios
 │   │   └── validation          # Validações customizadas
 └── src/test/java               # Testes unitários e de integração
+
 🛠️ Configuração e Execução
 Clone o Repositório:
-
-bash
-Copiar código
 git clone https://github.com/hazelski/test_library
 cd biblioteca-app
-Configuração do Banco de Dados: Certifique-se de configurar o banco de dados no arquivo application.properties ou utilize variáveis de ambiente no formato:
 
-properties
-spring.datasource.url=jdbc:mysql://localhost:3306/biblioteca
-spring.datasource.username=usuario
-spring.datasource.password=senha
 Executando a Aplicação com Maven:
-
-bash
-Copiar código
 mvn clean install
 mvn spring-boot:run
 
