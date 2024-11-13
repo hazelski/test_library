@@ -15,7 +15,6 @@ Spring Boot 3.3.5: Framework para construção de aplicações Java robustas e e
 Jakarta Validation API: Responsável pela validação de dados, com anotações customizadas.
 Banco de Dados: Suporte a bancos relacionais (ex.: PostgreSQL ou MySQL).
 Maven: Gerenciador de dependências e build da aplicação.
-Docker: Para containerização da aplicação.
 
 ⚙ Funcionalidades Principais
 CRUD de Livros: Criação, leitura, atualização e exclusão de livros.
