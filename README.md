@@ -1,4 +1,5 @@
 📚 Biblioteca App
+
 Aplicação desenvolvida para gerenciar uma biblioteca, incluindo cadastro e manipulação de livros, autores, e seus respectivos detalhes. 
 Com este sistema, é possível registrar novos livros, vincular a um autor, e listar ou buscar livros por autor, além de outros recursos.
 
